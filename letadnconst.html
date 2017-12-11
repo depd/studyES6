@@ -61,6 +61,59 @@
 				
 				console.log(bar()); //  [2,2]
 				
+				// const  声明常量，不可修改，而且长量必须初始化赋值，如果定义的是对象object，则可以修改对象内部的属性值  包括新增、删除
+				
+//				const type = "zeet";
+//					  type = "zeep";
+//				console.log(type);   // 报错
+
+				const type = {
+					a : 1
+				}
+				
+				//没有直接修改type的值，而是修改type.a的属性值，这是允许的。
+				type.a = 2;
+				console.log("type:",type);  // {a:2}
+				
+				//拓展Object也是没有问题的
+				type.b = 1;
+				console.log("type:",type);	// {a:2,b:1}
+				
+				//删除整个键值对也OK的
+				delete type.b;
+				console.log("type:",type);	// {a:2}
+				
+				
+				//如果重新定义数据结构~常量的内存地址值发生改变,这个是不可行的。
+//				type = {};	//Assignment to constant variable.
+//				type = [];	//Assignment to constant variable.
+
+//				const和let的异同点
+//
+//				**相同点：**const和let都是在当前块内有效，执行到块外会被销毁，也不存在变量提升（TDZ），不能重复声明。
+//				
+//				**不同点：**const不能再赋值，let声明的变量可以重复赋值。
+
+//				块级作用域的使用场景
+
+				for (var i = 0; i < 5; i++) {
+					setTimeout(() => {
+						console.log(i);
+					},0)
+				}
+				console.log(i);
+				
+				// 5
+				// 5 5 5 5 5       同步   -- 异步  -- 回调
+				
+//				在全局作用域声明
+//				如果在全局作用域使用let或者const声明，当声明的变量本身就是全局属性，比如closed。只会覆盖该全局变量，而不会替换它。
+
+				window.closed = false;
+				let closed = true;
+				
+				console.log(closed); 	   // true
+				console.log(window.closed) // false
 				
 			}
 		</script>
