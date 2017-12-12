@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.onload = function(){
+//				ES5
+				function a(num,callback){
+					num = num || 6;
+					callback = callback || function(data){
+						console.log("ES5:",data)
+					}
+					callback(num * num);
+				}
+				a(); // 36
+				
+				a(10,function(data){
+					console.log(data * 10);
+				}); // 1000
+				
+//				ES6
+				function b(num = 10, callback = function(data){console.log("ES6:",data)}){
+					callback(num * num);
+				};
+				b(); // 100
+				
+				b(10, function(data){
+					console.log(data * 10);
+				}); // 1000
+				
+				function c(num,b){
+					console.log(arguments); // {"0":6,"1":10}
+					console.log(arguments.length); // 2
+				};
+				c(6,10);
+				
+//				默认值不能被arguments识别。
+
+//				参数不仅可以设置默认值为字符串，数字，数组或者对象，还可以是一个函数。
+				
+				function add(){
+					return 10;
+				}
+				
+				function d(num = add()){
+					console.log(num);
+				}
+				d(); // 10
+				
+//				默认参数的临时死区
+				
+				function adp(a = b, b){
+					console.log(a + b);
+				}
+//				adp (undefined, 2); // b is not defined
+//				当初始化a时，b还没有声明，所以第一个参数对b来说就是临时死区。
+
+//				修改
+				function apd(b, a = b){
+					console.log(a + b)
+				}
+				apd(2,undefined); // 4
+				
+//				无命名参数
+//				当传入的参数是一个对象，不是一个具体的参数名，则是无命名参数。
+				
+				function ss(obj){
+					console.log(obj.a + obj.b); // 3
+				};
+				
+				let obj = {
+					a : 1,
+					b : 2
+				}
+				ss(obj);
+				
+//				**不定参数的使用：**使用...（展开运算符）的参数就是不定参数，它表示一个数组。
+
+				function bdd(...arr){
+					console.log(q + p);
+				}
+				let q = 1,p = 2
+				bdd(q, p);
+				
+//				**不定参数的使用限制：**必须放在所有参数的末尾，不能用于对象字面量setter中。
+
+				//错误的写法1
+//			    function add(...arr, c){
+//			      console.log(a + b)
+//			    }
+//			    let a = 1,b = 2,c = 3
+//			    add(a, b, c)
+//			    
+//			    //错误的写法2
+//			    let obj = {
+//			      set add(...arr) {
+//			      
+//			      }
+//			    }
+			}
+		</script>
+	</body>
+</html>
