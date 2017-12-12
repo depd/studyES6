@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.onload = function(){
+				// ES6 新增的字符串方法
+				let t = "abcdefg";
+				
+				// includes(str,index)检测字符串中的指定的文本，返回true,false (需要搜索字符串，开始搜索的位置)
+				if(t.includes("cde") > -1){
+					console.log(2)
+				}
+				// 2
+				
+				// startsWith(str,index) 如果在字符串起始部分检测到指定文本，返回true，否则返回false。
+				if(t.startsWith("ab")){
+					console.log(t.startsWith("ab"))
+				}
+				// true
+				
+				//endsWith(str,index) 如果在字符串结束部分检测到指定文本，返回true，否则返回false。
+				if(t.endsWith("fg")){
+					console.log(t.endsWith("fg"));
+				}
+				// true
+				
+//				如果你只是需要匹配字符串中是否包含某子字符串，那么推荐使用新增的方法，如果需要找到匹配字符串的位置，使用indexOf()。
+
+//				repeat(number);接收一个Number类型的数据，返回一个重复N次的新字符串。即使这个字符串是空字符，也你能返回N个空字符的新字符串。
+				console.log("ba".repeat(3));
+				// "bababa"
+				
+				// 使用模板字面量反撇号``
+				
+				let c = `123`
+				console.log(c);// 123
+				
+				let d = 
+				`	abc  					cde
+				`
+				console.log(d);
+				// abc 
+				// cde
+				let e = "123\n324"
+				console.log(e);
+				
+//				在模板字面量插入变量的方法
+//				我们不再需要使用 +（加号）来向字符串插入变量，而是使用${params}直接插入你需要添加到字符串的位置。
+
+				let start = "sss";
+				let name = `asdasd${start}1321`;
+				console.log(name);
+				
+				
+//				模板字面量的终极用法 tag是一个方法，方法名你可以任意命名，这种写法被称作标签模板。
+
+			    function tag(literals, ...substitutions) {
+			        //literals是数组，第一个位置是""，第二个位置是占位符之间的字符串，在本例中是haha
+			        //substitutions是字符串中的模板字面量，可能多个
+			        
+			        //函数最终返回字符串
+			    }
+			    let asd = 4;
+			    let tsd = tag`${asd} haha`;
+			    console.log(tsd) // undefined
+			}
+		</script>
+	</body>
+</html>
