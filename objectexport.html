@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.onload = function(){
+//				1、属性初始值简写
+				
+				// ES5
+				function a(id){
+					return {
+						id:id
+					};
+				};
+				
+				console.log("ES5:", a("app"));
+				
+				// ES6
+				b = (id) => ({
+					id
+				});
+				
+				console.log("ES6:",b("apps"));
+				
+//				2、对象方法简写
+				
+				// ES5
+				obj = {
+					id:1,
+					printId:function(){
+						console.log(this.id);
+					}
+				};
+				
+				obj.printId(); // 1
+				
+				// ES6
+				
+				objc = {
+					id:1,
+					printId(){
+						console.log(this.id)
+					}
+				};
+				
+				objc.printId(); // 1
+				
+				
+//				3、属性名可计算   属性名可以传入变量或者常量，而不只是一个固定的字符串。
+  				
+  				const ids = 5;
+  				const objs = {
+  					[`my-${ids}`] : 5
+  				}
+				
+				console.log(objs);  // my-5 : 5
+				
+			}
+		</script>
+	</body>
+</html>
