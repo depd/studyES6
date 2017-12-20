@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const name = Symbol();
+        const name1 = Symbol('sym1');
+        console.log('name:',name);     //  Symbol()
+        console.log('name1:',name1);   //  Symbol('sym1')
+
+        const names = Symbol('names');
+        const obj = {
+            [names] : 'haha'
+        }
+        console.log(obj[names]);        // haha
+        obj[names] = 'hehe';
+        console.log(obj[names]);        // hehe
+        console.log(typeof names)       // symbol
+
+        const for11 = Symbol.for('for1');
+        const for22 = Symbol.for('for2');
+        const for33 = Symbol.for('for3');
+
+        console.log(for11);                     // Symbol.for('for1')
+        console.log(for22);                     // Symbol.for('for2')
+        console.log(for33);                     // Symbol.for('for3')
+        console.log(Symbol.keyFor(for11));      // for1
+        console.log(Symbol.keyFor(for22));      // for2
+        console.log(Symbol.keyFor(for33));      // for3
+        
+        // Symbol不支持类型强制转换
+
+        // Symbol 检索
+        
+        // let a = Symbol('a');
+        // let b = Symbol('b');
+
+        // let objs = {
+        //     [a] : '321',
+        //     [b] : 44
+        // }
+
+        // let symbolKey = Object.getOwnPropertySymbols(objs);
+
+        // for(let i of symbolkey){
+        //     console.log(i , objs[i]);
+        // }
+
+        let a = Symbol('a');
+        let b = Symbol('b');
+
+        let objs = {
+            [a]: "123",
+            [b]: 45
+        }
+
+        const symbolsKey = Object.getOwnPropertySymbols(objs);
+
+        for(let value of symbolsKey) {
+            console.log(obj[value])   //undefined
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    Map和Set都叫做集合，但是他们也有所不同。Set常被用来检查对象中是否存在某个键名，Map集合常被用来获取已存的信息
+    <script>
+        let sets = new Set();
+        console.log(sets);
+
+        let set = new Set();
+        set.add('haha');
+        set.add(Symbol('haha'));
+
+        console.log(set.size); //2
+        
+        console.log(set);      //Set [ "haha", Symbol(haha) ]
+
+        console.log(set.has('haha'));  //true
+
+        // 迭代Set  使用for of
+        
+        for(let value of set){
+            console.log(value);   // haha Symbol(haha)
+        }
+
+        //如果你需要key，则使用下面这种方法
+        for(let [key,value] of set.entries()){
+            console.log(key , value)
+        }
+        // haha haha  Symbol(haha) Symbol(haha)
+
+        // **forEach操作Set：**Set本身没有key，而forEach方法中的key被设置成了元素本身。
+
+        set.forEach((value,key) => {
+            console.log(value,key);
+        });
+
+        //"haha" "haha"
+        //Symbol(haha) Symbol(haha)
+
+        set.forEach((value,key) => {
+            console.log(Object.is(value,key));
+        });
+        
+        // Object.is()方法判断两个值是否是相同的值
+        // true true
+    </script>
+</body>
+</html>
