@@ -46,9 +46,37 @@
         set.forEach((value,key) => {
             console.log(Object.is(value,key));
         });
-        
+
         // Object.is()方法判断两个值是否是相同的值
         // true true
+
+        // Set和Array的转换
+
+        // 数组转换为Set
+        const arr = [0,1,2,3,4];
+        let setts = new Set(arr);
+        console.log(setts);                     //    Set [ 0, 1, 2, 3, 4 ]
+
+        // Set转换为数组
+        let setarr = new Set();
+        setarr.add('1');
+        setarr.add('22');
+        console.log(setarr);                    //     Set [ "1", "22" ]
+        console.log(Array.from(setarr));        //     Array [ "1", "22" ]
+
+        // WeakSet与Set区别
+        // 1、WeakSet 对象中只能存放对象值, 不能存放原始值, 而 Set 对象都可以.
+
+        // 2、WeakSet 对象中存储的对象值都是被弱引用的, 如果没有其他的变量或属性引用这个对象值,
+        //  则这个对象值会被当成垃圾回收掉. 正因为这样, WeakSet 对象是无法被枚举的, 没有办法拿到它包含的所有元素.
+
+        let setd = new WeakSet();
+        const class_1 = {}, class_2 = {};
+        setd.add(class_1);
+        setd.add(class_2);
+        console.log(setd) // WeakSet {Object {}, Object {}}
+        console.log(setd.has(class_1)) // true
+        console.log(setd.has(class_2)) // true
     </script>
 </body>
 </html>
