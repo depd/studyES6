@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let map = new Map();
+        console.log(map);
+        
+        // 对比Set集合的原型，Map集合的原型多了set()和get()方法，注意set()和Set集合不是一个东西。
+        // Map没有add，使用set()添加key，value，在Set集合中，使用add()添加value，没有key。
+
+        let maps = new Map();
+        maps.set("name","haha");
+        maps.set("id",20);
+        console.log(maps);
+        // Map { name → "haha", id → 20 }
+        console.log(maps.get('name'));  // haha
+        console.log(maps.get('id'));    // 20
+        
+        const key = {
+            'wushi':true,
+            'buwushi':false
+        };
+        maps.set(key,'这是什么鬼？');
+        console.log(maps)  // Map { name → "haha", id → 20, {…} → "这是什么鬼？" }
+
+        maps.forEach((value,key) => {
+            console.log(key,value)
+        });
+
+        // name haha
+        // id 20
+        // Object { wushi: true, buwushi: false }  这是什么鬼？
+
+        let mapp = new WeakMap();
+        console.log(mapp.set(key,'hehe'));  //  WeakMap { {} → "hehe" }
+        console.log(mapp.get(key));  //hehe
+
+        //移除该元素
+        // key.parentNode.removeChild(key);
+        // key = null;
+        console.log(mapp);
+    </script>
+</body>
+</html>
